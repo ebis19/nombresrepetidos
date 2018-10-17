@@ -1,12 +1,9 @@
 package nombresrepetidos;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -16,7 +13,11 @@ public class Listadenombres {
 	TreeMap<Integer,String> repetidos;
 	//ArrayList<Nombre> nombres;
 	int cantrep;
-	public void llenar(String archivo ) throws IOException{
+	
+	
+	
+	
+	public Listadenombres(String archivo ) throws IOException{
 		
 		Scanner in = new Scanner(new File(archivo+".in"));
 		int cantmax=in.nextInt();
