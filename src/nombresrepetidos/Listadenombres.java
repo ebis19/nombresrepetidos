@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.TreeMap;
 
 public class Listadenombres {
-	HashMap<String,Integer> nombres;
+	HashMap<String, Integer> nombres;
 	TreeMap<Integer,String> repetidos;
 	//ArrayList<Nombre> nombres;
 	int cantrep;
@@ -22,8 +22,10 @@ public class Listadenombres {
 		Scanner in = new Scanner(new File(archivo+".in"));
 		int cantmax=in.nextInt();
 		String k;
+		this.cantrep=in.nextInt();
 		int c;
 		this.nombres= new HashMap<String,Integer>();
+		this.repetidos= new TreeMap<Integer,String>();
 		for (int i = 0; i < cantmax; i++) {
 			k=in.next();
 			if(nombres.containsKey(k)){
@@ -38,15 +40,19 @@ public class Listadenombres {
 	}
 	
 	public void ordenar(){
-		for (Entry<String, Integer> nombre : nombres.entrySet())
-			repetidos.put(nombre.getValue(), nombre.getKey());
+		
+		for (Entry<String, Integer> nombre : nombres.entrySet()) 
+			this.repetidos.put(nombre.getValue(), nombre.getKey());
+		
+		
 	}
 	public void exportarDatos(String a) throws IOException{
-		
+		Entry<Integer, String > n;
 		PrintWriter out= new  PrintWriter(new File(a+".out"));
-		for (int i = 0; i < cantrep; i++) {
-			Entry<Integer, String > n = repetidos.pollLastEntry();
+		for (int i = 0; i < this.cantrep; i++) {
+			 n = this.repetidos.pollLastEntry();
 			out.println(n.getValue()+" "+n.getKey());
+			
 		}
 		out.close();
 	}
